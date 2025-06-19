@@ -19,39 +19,20 @@
 ```
 └─ClassNameDir  # CamelCase
     └─SubModuleNameDir  # CamelCase
-        └─methods  # submodules methods folder when needed
         └─exceptions  # submodules exceptions folder when needed
         └─tests  # submodules tests folder when needed
         └─__init__.py
         └─for-agent-moduleinfo.md
-    └─methods  # methods folder
-    └─exceptions  # exceptions folder
     └─tests  # tests folder
     └─__init__.py
     └─for-agent-moduleinfo.md
+    └─ExceptionNo1.py
+    └─ExceptionNo2.py
     └─ClassName.py
 ```
 
 ## 예외
-- 예외 클래스는 항상 루트의 `EnhancedException` 클래스를 상속받아야 한다.
-- `EnhancedException`이 없으면, 프로젝트 시작 단계일 수 있으므로 지시자에게 알린다.
 - 예외 클래스는 전용 디렉토리를 두지 않고, 발생위치의 함수나 클래스와 같은 폴더에 두어야 한다.
-- 함수나 메소드 안에서 예외 처리 작업으로 인해 컨텍스트가 길어지는 것은 안 되므로, 다음 방식을 따라 예외를 처리한다.
-```
-try:
-    has_throwable_function(..)
-    
-except SomeException as e:  # catch and processable
-    dedicated_exception_handler(e)
-except SomeException as e:  # catch but not processable
-    raise e  # 아무것도 하지 않더라도 명시적으로 re-raise
-    
-# 만약 필요하다면..
-finally:
-    dedicated_finish_function(args)
-    
-```
-- 상기 예시에서의 줄바꿈은 가독성을 위한 설계이므로 잘 지킬 것.
 
 ## 로깅
-아직 미구현. 지시자의 지시가 있으면 이에 따른다.
+- 로깅 문서가 제공되면 그에 따른다.
