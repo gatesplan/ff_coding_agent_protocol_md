@@ -56,18 +56,39 @@
 ```
     # modulename
     모듈의 목적과 책임범위에 대한 간단한 설명
-```
-- 하나의 모듈에 대하여 설명하는 모듈 문서는 메서드를 다음 예시와 같이 설명한다.
-```
-    # modulename
-    모듈의 목적과 책임범위에 대한 간단한 설명
-    
-    ## api
+
     property: type = default    # 간단한 설명
     property: type = default    # 간단한 설명
     method(args: type, args: type = default) -> return_type
         raise ExceptionOrError
         메서드의 간단한 설명
+
+    # modulename
+    모듈의 목적과 책임범위에 대한 간단한 설명
+
+    property: type = default    # 간단한 설명
+    property: type = default    # 간단한 설명
+    method(args: type, args: type = default) -> return_type
+        raise ExceptionOrError
+        메서드의 간단한 설명
+
+    ...
+```
+- 하나의 모듈에 대하여 설명하는 모듈 문서는 메서드를 다음 예시와 같이 설명한다.
+```
+    # modulename
+    모듈의 목적과 책임범위에 대한 간단한 설명
+
+    property: type = default    # 간단한 설명
+    property: type = default    # 간단한 설명
+
+    method(args: type, args: type = default) -> return_type
+        raise ExceptionOrError
+        메서드의 간단한 설명
+
+    method usecase
+
+    ...
 ```
 
 
