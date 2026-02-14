@@ -1,36 +1,57 @@
-# Python Coding Protocol for Agent
-- 이 문서는 에이전트의 원활하고 균일한 Python 코딩을 위한 프로토콜이다.
-- 모든 에이전트는 Python 언어 사용시 이 코딩 프로토콜을 준수해야 한다.
-- 이 파일은 루트 폴더의 중앙 지침이므로 에이전트는 절대 이 파일을 수정하지 않는다.
+# Python Coding Protocol
 
-## 중요 규칙
-- 하나의 파일은 오직 하나의 함수 또는 하나의 클래스만 포함한다.
-- 모듈 클래스의 파일명과 클래스명은 CamelCase로 작성한다.
-- 예외 클래스는 책임 모듈 폴더 아래에 위치한다.
-- 클래스는 항상 단일 책임 원칙을 따른다.
+Python 코딩 스타일 및 품질 규칙.
 
-## 문서화 규칙
-- 모든 문서화는 `for-agent-moduleinfo.md` 파일 작성으로 충분하다.
-- 코드 내에서는 한줄 주석(`#`)만 사용한다.
-- Docstring(""" """), 멀티라인 주석, 함수/클래스 설명 주석 등 모든 문서화 주석을 작성하지 않는다.
-- 코드의 동작이나 구조 설명은 `for-agent-moduleinfo.md`에만 작성한다.
+## 기본 규칙
 
-### 코드 예시
+1. **1파일 1클래스**
+   - 하나의 파일은 하나의 클래스만 포함
+   - 파일명과 클래스명은 CamelCase
+
+2. **단일 책임 원칙**
+   - 각 클래스는 하나의 책임만
+
+3. **문서화**
+   - 코드 내: 한줄 주석(`#`)만 사용
+   - Docstring, 멀티라인 주석 사용 금지
+   - 상세 설명: `for-agent-moduleinfo.md`에 작성
+
+## 코드 예시
+
 ```python
-# 사용자 인증을 처리하는 서비스
-class AuthService:
-    def __init__(self, token_manager):
-        self.token_manager = token_manager
+# 주문 처리 서비스
+class OrderService:
+    def __init__(self, db_url: str):
+        self.db_url = db_url
 
-    def login(self, username, password):
-        if not username or not password:
-            raise ValueError("Invalid credentials")
-        token = self.token_manager.generate(username)
-        return token
+    def create_order(self, user_id: int):
+        # 검증
+        if not user_id:
+            raise ValueError("Invalid user_id")
 
-    def validate_token(self, token):
-        return self.token_manager.verify(token)
+        # 주문 생성
+        return {"order_id": 123}
+```
 
-    def logout(self, token):
-        self.token_manager.revoke(token)
+## 클래스 작성 규칙
+
+@.claude/for-agent-codingprotocol-makeclass.md 참조
+
+## 로깅
+
+`loguru` 사용.
+
+```python
+from loguru import logger
+
+class OrderService:
+    def __init__(self, db_url: str):
+        logger.info(f"OrderService 초기화: db_url={db_url}")
+        self.db_url = db_url
+
+    def create_order(self, user_id: int):
+        logger.info(f"create_order 시작: user_id={user_id}")
+        # 중요 단계는 DEBUG
+        logger.debug(f"DB 연결 확인")
+        return {"order_id": 123}
 ```
