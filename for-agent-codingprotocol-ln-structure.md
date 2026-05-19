@@ -57,6 +57,8 @@ tests/
 
 **규칙: 항상 상대 임포트 사용**
 
+### 모듈 __init__.py
+
 ```python
 # src/fishfactory/l1/order/__init__.py
 
@@ -66,7 +68,7 @@ __all__ = ['Order']
 ```
 
 **이유:**
-- 모듈 이동 시 경로 불변 (l1 → l2 이동 시 수정 불필요)
+- 모듈 이동 시 경로 불변 (l1 -> l2 이동 시 수정 불필요)
 - 레벨 변경 자동 반영 (디렉토리 위치 = 계층 상태)
 - 다른 프로젝트 복사 시 패키지명 변경 불필요
 
@@ -74,6 +76,41 @@ __all__ = ['Order']
 ```python
 # 사용자 코드
 from fishfactory.l1.order import Order  # 짧은 import
+```
+
+### 레이어 __init__.py
+
+각 레이어 폴더(ln/)의 `__init__.py`는 해당 레이어의 모든 모듈을 re-export한다.
+
+```python
+# src/fishfactory/l1/__init__.py
+
+from .order import Order
+from .pair import Pair
+
+__all__ = ['Order', 'Pair']
+```
+
+**효과:**
+```python
+from fishfactory.l1 import Order, Pair  # 레이어 단위 import
+```
+
+### 패키지 최상단 __init__.py
+
+패키지 루트의 `__init__.py`는 최상위 레이어의 메인 비즈니스 모듈만 노출한다.
+
+```python
+# src/fishfactory/__init__.py
+
+from .l3.portfolio import Portfolio  # 최상위 파사드만
+
+__all__ = ['Portfolio']
+```
+
+**효과:**
+```python
+from fishfactory import Portfolio  # 최단 경로 import
 ```
 
 ## 3단계 해상도 문서 구조
