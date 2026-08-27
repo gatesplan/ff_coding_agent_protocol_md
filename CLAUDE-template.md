@@ -2,9 +2,11 @@
 
 ## 구조 및 코딩 규칙
 
-- Ln 구조: `@ff_coding_agent_protocol_md/for-agent-codingprotocol-ln-structure.md` 참조
-- Python 코딩: `@ff_coding_agent_protocol_md/for-agent-codingprotocol-python.md` 참조
-- 연구 프로토콜: `@ff_coding_agent_protocol_md/for-agent-research.md` 참조
+프로토콜 문서는 프로젝트 루트 기준 `.claude/`에서 찾는다.
+
+- Ln 구조: `@.claude/for-agent-codingprotocol-ln-structure.md` 참조
+- Python 코딩: `@.claude/for-agent-codingprotocol-python.md` 참조
+- 연구 프로토콜: `@.claude/for-agent-research.md` 참조
 
 ## 사실관리 규칙
 
