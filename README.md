@@ -4,7 +4,7 @@ AI 에이전트용 연구 프로토콜 문서.
 
 코딩 프로토콜(ln-structure, Python 규칙, 문서 템플릿, Claude Code 훅)은 2026-09-15 부로
 [ff-lntools](https://github.com/gatesplan/ff-lntools) 의 `src/lntools/protocol/` 로 옮겨져 거기서 관리한다.
-프로젝트 세팅은 `pip install git+https://github.com/gatesplan/ff-lntools` 후 `lnt init`.
+프로젝트 세팅은 `pip install ff-lntools` 후 `lnt init`.
 
 ## 파일
 
